@@ -1,0 +1,858 @@
+@import 'fonts.scss';
+@import 'normalize.scss';
+@import 'mixsins.scss';
+@import 'smart-grid.scss';
+
+/*! Основные стили */
+
+$color1: #181a1f;
+$color2: #ffda00;
+$color3: #ffffff;
+$color4: #17191e;
+$color5: #ffdb00;
+$color6: #ff6600;
+
+/*=============================================
+      ОБЩИЕ ПРАВИЛА
+  ============================================= */
+
+.clearfix:after {
+    @include clearfix;
+}
+
+.wrapper {
+    @include wrapper;
+}
+
+html {
+    font-size: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "AbelRegular";
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.375;
+}
+
+p,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+/*============================================= */
+
+
+/*=============================================
+        ШАПКА
+============================================= */
+.header {
+    background-color: $color4;
+    padding-top: 43px;
+    padding-bottom: 228px;
+
+    @include xs-block {
+        padding-top: 20px;
+        padding-bottom: 80px;
+    }
+
+    @include md-block {
+        padding-bottom: 160px;
+    }
+}
+
+.header__top {
+    @include row-flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include xs (justify-content, space-around);
+
+    .header__logo {
+        @include col;
+    }
+}
+
+.header__burger {
+    @include col;
+
+    margin-right: 26px;
+    margin-top: -8px;
+
+    @include xs(order, 2);
+}
+
+/* Кнопка меню-гамбургер
+------------------------------------------------*/
+.burger {
+    @include gamburger (50px, 50px, 17px, 2px, 4px, $color4, $color2);
+}
+
+/*----------------------------------------------*/
+
+
+/*Скрытое меню
+------------------------------------------------*/
+.nav {
+    display: none;
+    max-width: 100%;
+    text-align: right;
+
+    &__link {
+        display: block;
+        padding: 3px 16px;
+        color: $color2;
+        font-family: "AbelRegular";
+        font-size: 1.25rem;
+        text-transform: uppercase;
+    }
+
+    .nav__link:hover {
+        background-color: darken($color2, 35%);
+        transition: all ease 0.5s;
+    }
+}
+
+.visible {
+    display: flex;
+
+    @include xs(order, 3);
+    @include size-xs(12);
+    justify-content: center;
+    margin-top: 25px;
+}
+
+/*----------------------------------------------*/
+
+
+.header__title {
+    margin-top: 190px;
+    margin-bottom: 9px;
+    padding-left: 5px;
+    color: $color5;
+    font-size: 12vw;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 19px;
+    font-weight: 100;
+
+    @media screen and (max-width: 992px) {
+        margin-top: 150px;
+    }
+
+    @media screen and (max-width: 576px) {
+        margin-top: 90px;
+    }
+}
+
+.header__desc {
+    margin-bottom: 40px;
+    color: $color3;
+    font-size: 15px;
+    line-height: 1.67;
+    letter-spacing: 1px;
+}
+
+.header__button {
+    display: inline-block;
+    margin-left: -2px;
+    border: 2px solid $color2;
+    padding: 25px 60px;
+    border-radius: 30px;
+    color: $color3;
+    font-size: 17px;
+    line-height: 0.88;
+    text-transform: uppercase;
+    letter-spacing: 1.26px;
+    &:hover{
+        background: $color2;
+    }
+}
+
+/*============================================= */
+
+
+/*=============================================
+        ОСНОВНОЙ КОНТЕНТ
+============================================= */
+
+/*---------------------------------------------
+  Секция с цитатой
+--------------------------------------------- */
+.quote {
+    padding: 87px 0 92px;
+    font-size: 20px;
+    background-color: $color2;
+
+    @include md-block {
+        padding-left: 30px;
+        padding-right: 30px;
+        font-size: 18px;
+    }
+
+    @include xs-block {
+        padding: 40px 15px;
+        font-size: 15px;
+    }
+
+    &__text {
+        max-width: 964px;
+        margin: 0 auto;
+        color: $color1;
+        font-size: inherit;
+        line-height: 1.25;
+        letter-spacing: 1.5px;
+        text-align: center;
+    }
+}
+
+/*----------------------------------------------*/
+
+/*---------------------------------------------
+  Секция услуги
+--------------------------------------------- */
+.amenities {
+    padding: 119px 0;
+    text-align: center;
+
+    @media screen and (max-width: 576px) {
+        padding: 80px 0;
+    }
+
+    &__items {
+        @include row-flex;
+        justify-content: center;
+    }
+
+    &__button {
+        display: inline-block;
+        margin: 0 auto;
+        border: 2px solid $color2;
+        padding: 25px 98px;
+        border-radius: 30px;
+        color: $color1;
+        font-size: 17px;
+        line-height: 1;
+        text-transform: uppercase;
+        letter-spacing: 1.26px;
+        &:hover{
+            background: $color2;
+        }
+
+        @include xs-block {
+            padding: 25px 50px;
+            font-size: 15px;
+        }
+    }
+}
+
+.itemAmen {
+    @include col;
+    @include size(4);
+    @include size-sm(6);
+    @include size-xs(12);
+
+    @include sm(text-align, center);
+
+    text-align: left;
+
+    &__icon {
+        @include sm(margin, 0 auto);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 77px;
+        height: 77px;
+        background-color: $color2;
+    }
+
+    &__title {
+        margin-top: 28px;
+        margin-bottom: 30px;
+        color: $color5;
+        font-size: 50px;
+        font-weight: 200;
+        line-height: 1.53;
+        text-transform: uppercase;
+        letter-spacing: 3.75px;
+
+        @media screen and (max-width: 576px) {
+            font-size: 40px;
+        }
+    }
+
+    &__desc {
+        margin-bottom: 86px;
+        color: $color1;
+        font-size: 15px;
+        line-height: 1.3;
+        letter-spacing: 3.2px;
+
+        @media screen and (max-width: 320px) {
+            margin-bottom: 50px;
+        }
+    }
+}
+
+/*----------------------------------------------*/
+
+
+/*---------------------------------------------
+  Секция  с показателями
+--------------------------------------------- */
+.indicators {
+    padding: 95px 0 60px 0;
+    background-color: $color4;
+
+    @include md(padding-bottom, 0px);
+
+    &__items {
+        @include row-flex;
+    }
+}
+
+.itemIndic {
+    @include col;
+    @include size(3);
+    @include size-md(6);
+    @include size-xs(12);
+
+    @include md(margin-bottom, 70px);
+
+    text-align: center;
+
+    &__number {
+        margin-top: 32px;
+        color: $color3;
+        font-size: 60px;
+
+        @include md(margin-top, 10px);
+    }
+
+    &__title {
+        margin-top: 5px;
+        margin-bottom: 0;
+        color: $color5;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 3.82;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+
+        @include md(margin-top, -20px);
+    }
+}
+
+/*----------------------------------------------*/
+
+/*---------------------------------------------
+  Секция с портфолио
+--------------------------------------------- */
+.portfolio {
+    padding: 3.125rem 0px 257px 0px;
+    text-align: center;
+
+    &__buttonsCats {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin-top: 7.125rem;
+        margin-bottom: 120px;
+        margin-left: 25px;
+
+        @include md-block {
+            display: block;
+            margin-bottom: 40px;
+        }
+    }
+}
+
+.titleSection {
+    padding-left: 3px;
+    margin-bottom: 15px;
+    text-align: left;
+    color: $color5;
+    font-size: 3.125rem;
+    line-height: 1.92;
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 3.75px;
+}
+
+.descSection {
+    max-width: 945px;
+    text-align: left;
+    color: $color1;
+    font-size: 1.18rem;
+    line-height: 1.25;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+}
+
+.buttonCat {
+    display: inline-block;
+    padding: 7px 33px;
+    border: 2px solid $color2;
+    color: $color1;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+}
+
+.buttonCat--photo {
+    padding: 7px 49px;
+}
+
+.buttonCat-position {
+    margin-right: 27px;
+
+    @include md (margin-bottom, 15px);
+}
+
+.buttonCat--active,
+.buttonCat:hover {
+    background-color: $color2;
+}
+
+.portfolio__content {
+    display: flex;
+    width: 100%;
+    background-color: #17191e;
+}
+
+.portfolio__left {
+    width: 26%;
+}
+
+.portfolio__rightTop {
+    display: flex;
+
+    @include md-block {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.portfolio__item1 {
+    width: 48.6%;
+    text-align: left;
+    padding: 113px 90px 113px 74px;
+    background-color: $color2;
+    opacity: 0.9;
+
+    @include md-block {
+        width: 70%;
+        padding: 31px 70px 11px 74px
+    }
+
+    @include sm (padding, 31px 15px 11px 10px);
+}
+
+.portfolio__title {
+    margin-top: 0;
+    color: $color1;
+    font-size: 1.85rem;
+    line-height: 1;
+    font-weight: 400;
+    letter-spacing: 2.25px;
+}
+
+.portfolio__desc {
+    color: $color3;
+    font-size: 1.25rem;
+    line-height: 1.25;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+}
+
+.portfolio__buttonItem {
+    padding: 14px 49px 15px 40px;
+    border: 2px solid $color3;
+    color: $color1;
+    font-size: 20px;
+    line-height: 6.82;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    &:hover{
+        background: $color3;
+    }
+
+    @include xs-block {
+        padding: 10px 25px 10px 25px;
+        font-size: 17px;
+    }
+}
+
+.portfolio__rightDown {
+    display: flex;
+
+    @include md-block {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.portfolio__item3 {
+    width: 35%;
+    background-color: #3c3b32;
+
+}
+
+.portfolio__item4 {
+    width: 30%;
+    background-color: #5d5c50;
+}
+
+.portfolio__item5 {
+    width: 35%;
+    background-color: #3c3b32;
+}
+
+.portfolio__item {
+    display: block;
+    cursor: pointer;
+
+    @include md-block {
+        width: 70%;
+        margin-bottom: 5px;
+    }
+
+    img {
+        max-width: 100%;
+        display: block;
+        object-fit: cover;
+    }
+}
+
+.portfolio__button {
+    margin-top: 60px;
+    padding: 20px 102px;
+    border: 2px solid $color2;
+    border-radius: 30px;
+    color: $color1;
+    font-size: 17px;
+    line-height: 8;
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 1.26px;
+
+    @include xs (padding, 20px 50px);
+    &:hover{
+        background: $color2;
+    }
+}
+
+/*----------------------------------------------*/
+
+/*---------------------------------------------
+  Секция клиенты
+--------------------------------------------- */
+.clients {
+    padding: 50px 0 115px 0;
+    background-color: $color4;
+}
+
+.descSection--clients {
+    color: $color3;
+}
+
+.clients__slider {
+    margin-top: 120px;
+
+    .owl-dots {
+        width: 100%;
+        text-align: center;
+        margin-top: 47px;
+
+        .owl-dot {
+            width: 10px;
+            height: 10px;
+            display: inline-block;
+            background-color: $color3;
+            margin-left: 10px;
+            transition: background-color 0.5s ease transform 0.5s ease;
+            outline: none;
+
+            &.active {
+                background-color: $color2;
+                transform: scale(1.5)
+            }
+        }
+    }
+}
+
+.clients__item {
+    img {
+        width: auto !important;
+    }
+}
+
+/*----------------------------------------------*/
+
+/*---------------------------------------------
+  Секция контакты
+--------------------------------------------- */
+.contacts {
+    padding-top: 48px;
+}
+
+.form__wrapper {
+    max-width: 972px;
+    margin: 120px auto;
+    margin-bottom: 98px;
+
+    @include sm(margin, 30px auto);
+}
+
+.form {
+    @include row-flex;
+    justify-content: space-between;
+
+    @include sm(justify-content, center);
+
+    &__name,
+    &__email,
+    &__subject,
+    &__message,
+    &__button {
+        @include col;
+        @include size(6);
+
+        @include size-sm(12);
+
+        margin-bottom: 18px;
+        padding: 10px 20px 11px 24px;
+        border: 2px solid $color4;
+        font-family: "AbelRegular";
+        color: $color1;
+        font-size: 20px;
+        font-weight: 400;
+        letter-spacing: 1.5px;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &__subject {
+        @include col;
+        @include size(12);
+        margin-top: 0px;
+    }
+
+    &__message {
+        @include col;
+        @include size(12);
+        height: 182px;
+        margin-bottom: 40px;
+        resize: none;
+
+        @include sm(margin-bottom, 20px);
+
+        &::placeholder {
+            font-family: "AbelRegular";
+            color: $color1;
+            font-size: 20px;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            line-height: 1.3;
+        }
+    }
+
+    &__button {
+        @include col;
+        @include size(4.8);
+
+        @include size-sm(6);
+
+        margin: 0 auto;
+        padding: 20px 32px 22px 20px;
+        text-transform: uppercase;
+        background: transparent;
+        border: 2px solid $color2;
+        border-radius: 30px;
+        cursor: pointer;
+
+        @include sm(padding, 15px 0);
+
+        &:hover{
+            background: $color2;
+        }        
+    }
+}
+
+::placeholder {
+    font-family: "AbelRegular";
+    color: $color1;
+    font-size: 20px;
+    line-height: 4.8;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+}
+
+:focus::placeholder {
+    color: transparent;
+}
+
+/* Чипс для формы
+------------------------------------------------*/
+.chips-field {    
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 20%;
+    max-width: 40%;
+    margin: 0 auto;
+
+    @include sm-block{
+        max-width: 70%;
+    }
+}
+
+.chips-field .chipp {
+    padding: 4rem 1.5rem;    
+    // border-radius: 12px;
+    background: rgba(0, 0, 0, 0.7);
+    color: $color2;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-align: center;
+
+    @include sm-block{
+        padding: 2rem 1rem;
+    }
+}
+/*----------------------------------------------*/
+
+
+
+.contactsItems__wrapper {
+    padding: 112px 0;
+    background-color: $color2;
+
+    @include sm(padding, 40px 0);
+}
+
+.contacts__items {
+    @include row-flex;
+    justify-content: space-around;
+
+    @include lg(justify-content, center);
+}
+
+.contactsItem {
+    @include row-flex;
+    @include col;     
+    @include size(3.15);
+
+    @include size-lg(6);
+    @include size-xs(11);
+   
+    align-items: center;
+    flex-wrap: nowrap;
+
+    @include lg(margin-bottom, 20px);
+
+    &__pic {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 80px;
+        height: 80px;
+        margin-right: 22px;
+        background-color: $color4;
+    }
+
+    &__phone,
+    &__email,
+    &__adres {
+        color: $color1;
+        font-size: 20px;
+        line-height: 4.8;
+        font-weight: 400;
+        letter-spacing: 1.5px;
+    }
+
+    &__adres {
+        line-height: 1.3;
+    }
+
+    &:last-child {
+        flex-wrap: nowrap;
+    }
+}
+
+/*----------------------------------------------*/
+
+/*============================================= */
+
+
+/*=============================================
+        ПОДВАЛ
+============================================= */
+.footer {
+    padding: 83px 0 20px 0;
+    background-color: $color4;
+    text-align: center;
+
+    &__copy {
+        color: $color3;
+        font-size: 25px;
+        line-height: 3.84;
+        font-weight: 400;
+        letter-spacing: 1.88px;
+
+        span {
+            color: $color5;
+        }
+
+        @include xs-block {
+            margin-top: -30px;
+            font-size: 20px;
+            line-height: 1.3;
+        }
+    }
+
+    &__social {
+        @include row-flex;
+        justify-content: center;
+
+        margin-top: 20px;
+        margin-bottom: 41px;
+    }
+
+    &__linkSocial {
+        margin-left: 37px;
+
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+
+    &__buttonScroll {
+        position: fixed;
+        right: 40px;
+        bottom: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        border: 1px solid #000;
+        background: $color2;
+        opacity: 0.5;
+        cursor: pointer;
+    }
+}
+
+/*============================================= */
+
+
+/*=============================================
+        АДАПТИВ
+============================================= */
+
+@import '_media.scss';
